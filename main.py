@@ -6,6 +6,8 @@ def send_notification(title: str, message: str):
     notification = notifypy.Notify()
     notification.title = title
     notification.message = message
+    notification.icon = "./icon.jpeg"
+    notification.application_name = "Sweeper"
     notification.send()
 
 
