@@ -1,11 +1,18 @@
-from pynput.keyboard import Key, Listener
+from pynput.keyboard import Listener
+import notifypy
+
+
+def send_notification(title: str, message: str):
+    notification = notifypy.Notify()
+    notification.title = title
+    notification.message = message
+    notification.send()
 
 
 def on_press(key):
-    print("{0} pressed.".format(key))
-    if key == Key.esc:
-        return False
+    return key
 
 
 with Listener(on_press=on_press) as listener:
+    send_notification("Cleaning mode activated.", "SWEEP, SWEEP, SWEEP")
     listener.join()
